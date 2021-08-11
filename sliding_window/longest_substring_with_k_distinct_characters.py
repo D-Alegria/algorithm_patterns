@@ -56,4 +56,4 @@ if __name__ == '__main__':
     print(longestSubstringWithKDistinctCharacters("araaci", 2))
     print(longestSubstringWithKDistinctCharacters("araaci", 1))
     print(longestSubstringWithKDistinctCharacters("cbbebi", 3))
-    print(longestSubstringWithKDistinctCharacters("aaaaaaaaabaaaaaaaavaaaaaaaaaaaaaaaeaaaaa", 2))
+    print(longestSubstringWithKDistinctCharacters("aaaaaaaaabaaaaaaaavaaaaaaaaaaaaaaataaaaa", 2))
