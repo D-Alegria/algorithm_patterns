@@ -36,5 +36,5 @@ def longest_ones(arr: [], k: int) -> int:
 
 
 if __name__ == '__main__':
-    print(longest_ones([0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1], 2))
-    print(longest_ones([0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1], 3))
+    print(longest_ones([0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1], 2))  # 6
+    print(longest_ones([0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1], 3))  # 9
