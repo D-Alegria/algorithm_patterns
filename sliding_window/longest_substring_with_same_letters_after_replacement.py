@@ -61,3 +61,7 @@ if __name__ == '__main__':
     print(substring_after_replacement("aabccbb", 2))  # 5
     print(substring_after_replacement("abbcb", 1))  # 4
     print(substring_after_replacement("abccde", 1))  # 3
+
+    print(1 + (0 or 1))
+    print(1 + (None or 1))
+#     it works. it'll print 2 in both cases 'cause 0 and None are equal to false.
