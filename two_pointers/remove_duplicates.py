@@ -26,9 +26,8 @@ def remove_duplicates(arr: List[int]) -> int:
         if arr[front] != arr[back]:
             count += 1
             back = front
-            front += 1
-        else:
-            front += 1
+        front += 1
+
     return count
 
 
