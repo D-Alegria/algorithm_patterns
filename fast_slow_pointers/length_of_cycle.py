@@ -35,10 +35,10 @@ if __name__ == '__main__':
     head.next_node.next_node.next_node = Node(4)
     head.next_node.next_node.next_node.next_node = Node(5)
     head.next_node.next_node.next_node.next_node.next_node = Node(6)
-    print("Linked has cycle: " + str(length_of_cycle(head)))  # 0
+    print("Linked has cycle length: " + str(length_of_cycle(head)))  # 0
 
     head.next_node.next_node.next_node.next_node.next_node = head.next_node.next_node
-    print("Linked has cycle: " + str(length_of_cycle(head)))  # 4
+    print("Linked has cycle length: " + str(length_of_cycle(head)))  # 4
 
     head.next_node.next_node.next_node.next_node.next_node = head.next_node.next_node.next_node
-    print("Linked has cycle: " + str(length_of_cycle(head)))  # 3
+    print("Linked has cycle length: " + str(length_of_cycle(head)))  # 3
