@@ -29,10 +29,10 @@ if __name__ == '__main__':
     head.next_node.next_node.next_node = Node(4)
     head.next_node.next_node.next_node.next_node = Node(5)
     head.next_node.next_node.next_node.next_node.next_node = Node(6)
-    print("Linked has cycle: " + str(find_cycle(head)))
+    print("Linked has cycle: " + str(find_cycle(head)))  # False
 
     head.next_node.next_node.next_node.next_node.next_node = head.next_node.next_node
-    print("Linked has cycle: " + str(find_cycle(head)))
+    print("Linked has cycle: " + str(find_cycle(head)))  # True
 
     head.next_node.next_node.next_node.next_node.next_node = head.next_node.next_node.next_node
-    print("Linked has cycle: " + str(find_cycle(head)))
+    print("Linked has cycle: " + str(find_cycle(head)))  # True
