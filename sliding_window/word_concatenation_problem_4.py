@@ -28,37 +28,54 @@ from typing import List
 from collections import deque
 
 
-def word_concatenation(s: str, words: List[str]) -> List[int]:
+def word_concatenation1(s: str, words: List[str]) -> List[int]:
     word_map = {word: 0 for word in words}
+    word_count = {}
     word_length = len(words[0])
     window = deque()
+    not_part = deque()
     current_word = ""
     total = 0
     result = []
+
+    for word in words:
+        if word not in word_count:
+            word_count[word] = 0
+        word_count[word] += 1
 
     for i, val in enumerate(s):
         current_word += val
         window.append(val)
 
         if len(current_word) == word_length:
-            word_map[current_word] += 1
-            total += 1
-            back = ""
+            if current_word in word_map:
+                word_map[current_word] += 1
+                total += 1
+                back = ""
 
-            while word_map[current_word] > 1:
-                back += window.popleft()
+                while word_map[current_word] > word_count[current_word] or len(not_part) > 0:
+                    back += window.popleft()
 
-                if len(back) == word_length:
-                    word_map[back] -= 1
-                    total -= 1
-                    back = ""
+                    if len(back) == word_length:
+                        if back in word_map:
+                            word_map[back] -= 1
+                            total -= 1
+                        else:
+                            not_part.popleft()
+                        back = ""
 
-            if total == len(words):
-                result.append(i - len(window) + 1)
-            current_word = ""
+                if total == len(words):
+                    result.append(i - len(window) + 1)
+                current_word = ""
+            else:
+                not_part.append(current_word)
+                current_word = ""
+
     return result
 
 
 if __name__ == '__main__':
     print(word_concatenation("catfoxcat", ["cat", "fox"]))
     print(word_concatenation("catcatfoxfox", ["cat", "fox"]))
+    print(word_concatenation("barfoothefoobarman", ["foo", "bar"]))
+    print(word_concatenation("wordgoodgoodgoodbestword", ["word", "good", "best", "good"]))
