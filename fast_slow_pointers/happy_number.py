@@ -56,30 +56,23 @@ def happy_number(num: int) -> bool:  # S = O(N*N) T = O(2N)
 
 
 def happy_number1(num: int) -> bool:  # S = O(1) T = O(3N)
-    fast, slow = 0, 0
-    slow_num, fast_num = num, num
+    fast, slow = num, num
 
     while True:
-
-        for i in str(slow_num):  # N
-            slow += int(i) ** 2
-        slow_num = slow
-        print(slow)
-
-        for i in str(fast_num):  # N
-            fast += int(i) ** 2
-        fast_num = fast
-        fast = 0
-
-        for i in str(fast_num):  # N
-            fast += int(i) ** 2
-        fast_num = fast
+        slow = find_square_sum(slow)
+        fast = find_square_sum(find_square_sum(fast))
 
         if fast == slow:
             return False
         if slow == 1 or fast == 1:
             return True
-        fast, slow = 0, 0
+
+
+def find_square_sum(num):
+    total = 0
+    for i in str(num):  # N
+        total += int(i) ** 2
+    return total
 
 
 if __name__ == '__main__':
