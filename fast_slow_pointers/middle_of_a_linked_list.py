@@ -30,12 +30,8 @@ def middle_linked_list(head_node: Node) -> Node:  # T = O(N), S = O(1)
     fast, slow = head_node, head_node
 
     while fast is not None and fast.next_node is not None:  # N
-        fast = fast.next_node
+        fast = fast.next_node.next_node
         slow = slow.next_node
-        if fast.next_node is not None:
-            fast = fast.next_node
-        else:
-            break
     return slow
 
 
