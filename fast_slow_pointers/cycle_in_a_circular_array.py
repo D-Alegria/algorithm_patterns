@@ -72,3 +72,4 @@ if __name__ == '__main__':
     print(circular_array_loop_exists([-1, 2]))  # False
     print(circular_array_loop_exists([1, 1, 2]))  # True
     print(circular_array_loop_exists([-1, -2, -3, -4, -5]))  # False
+    print(circular_array_loop_exists([3, 1, 2]))  # True
