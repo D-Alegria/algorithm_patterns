@@ -26,17 +26,17 @@
 """
 
 
-def insert_interval(intervals: [[int]], new_interval: [[int]]) -> [[int]]:
-    intervals.append(new_interval)
-    intervals.sort(key=lambda a: a[0])
+def insert_interval(intervals: [[int]], new_interval: [[int]]) -> [[int]]:  # T = O(N * Log(N)) S = O(N)
+    intervals.append(new_interval)  # O(1)
+    intervals.sort(key=lambda a: a[0])  # O(N * Log(N))
     result = [intervals[0]]
 
-    for i in range(1, len(intervals)):
+    for i in range(1, len(intervals)):  # O(N)
         current = result[-1]
         if current[1] >= intervals[i][0]:
             result[-1][1] = max(current[1], intervals[i][1])
         else:
-            result.append([intervals[i][0], intervals[i][1]])
+            result.append([intervals[i][0], intervals[i][1]])  # O(1)
 
     return result
 
