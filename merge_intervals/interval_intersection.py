@@ -28,7 +28,7 @@
 """
 
 
-def intersect(arr1: [[int]], arr2: [[int]]) -> [[int]]:
+def intersect(arr1: [[int]], arr2: [[int]]) -> [[int]]:  # S = O(N) T = O(N) N is the longest array
     result = []
     i, j = 0, 0
 
