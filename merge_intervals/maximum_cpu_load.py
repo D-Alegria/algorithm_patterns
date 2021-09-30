@@ -30,12 +30,12 @@ class Job:
         self.load = load
 
 
-def find_max_cpu_load(jobs: [Job]):
-    jobs.sort(key=lambda x: x.start)
+def find_max_cpu_load(jobs: [Job]):  # S=O(N) T=O(N Log N) + O(N)
+    jobs.sort(key=lambda x: x.start)  # O(N Log N)
     max_load = 0
     result = [jobs[0]]
 
-    for i in range(1, len(jobs)):
+    for i in range(1, len(jobs)):  # O(N)
         current = result[-1]
         if jobs[i].start <= current.end:
             result[-1].end = max(current.end, jobs[i].end)
