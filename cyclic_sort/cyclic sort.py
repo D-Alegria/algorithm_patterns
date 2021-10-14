@@ -23,12 +23,15 @@
 """
 
 
-def cyclic_sort(nums: []) -> []:
-    for i in range(len(nums)):
+def cyclic_sort(nums: []) -> []:  # S = O(1) T = O(N)
+    i = 0
+    while i < len(nums):
         if nums[i] != i + 1:
             temp = nums[i]
             nums[i] = nums[temp - 1]
             nums[temp - 1] = temp
+        else:
+            i += 1
     return nums
 
 
