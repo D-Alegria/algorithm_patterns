@@ -36,7 +36,7 @@ def printList(schedule: [Interval]):
     print()
 
 
-def find_employee_free_time(schedule: [[Interval]]) -> [Interval]:  # S=O(N^2) T=o(n log n)
+def find_employee_free_time(schedule: [[Interval]]) -> [Interval]:  # S=O(N) T=o(n log n)
     # merge intervals
     merge_schedules = []
     for i in schedule:  # O(N)
