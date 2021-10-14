@@ -23,7 +23,7 @@
 def find_missing_numbers(nums: []) -> [int]:  # S = O(1) T = O(N)
     i = 0
     while i < len(nums):
-        if nums[i] != i + 1:
+        if nums[i] != i + 1 and nums[nums[i] - 1] != nums[i]:
             temp = nums[i]
             nums[i] = nums[temp - 1]
             nums[temp - 1] = temp
