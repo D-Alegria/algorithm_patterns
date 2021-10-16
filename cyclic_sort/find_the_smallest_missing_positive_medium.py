@@ -18,7 +18,7 @@
 """
 
 
-def find_first_missing_positive(nums: [int]) -> int:
+def find_first_missing_positive(nums: [int]) -> int:  # T = O(N) S = O(1)
     i = 0
     while i < len(nums):
         if 0 < nums[i] < len(nums) and nums[i] != i + 1 and nums[nums[i] - 1] != nums[i]:
