@@ -21,7 +21,7 @@
 def find_first_missing_positive(nums: [int]) -> int:  # T = O(N) S = O(1)
     i = 0
     while i < len(nums):
-        if 0 < nums[i] < len(nums) and nums[i] != i + 1 and nums[nums[i] - 1] != nums[i]:
+        if 0 < nums[i] <= len(nums) and nums[i] != i + 1 and nums[nums[i] - 1] != nums[i]:
             temp = nums[i]
             nums[i] = nums[temp - 1]
             nums[temp - 1] = temp
