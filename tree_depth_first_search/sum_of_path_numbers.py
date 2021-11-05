@@ -11,17 +11,14 @@ class TreeNode:
         self.right = right
 
 
-def get_all_paths(root_node, currentSum):
+def find_sum_of_path_numbers(root_node, currentSum=0):
     if not root_node:
         return 0
     currentSum += root_node.val
     if not root_node.left and not root_node.right:
         return currentSum
-    return get_all_paths(root_node.left, currentSum * 10) + get_all_paths(root_node.right, currentSum * 10)
-
-
-def find_sum_of_path_numbers(root_node) -> int:
-    return get_all_paths(root_node, 0)
+    return find_sum_of_path_numbers(root_node.left, currentSum * 10) + find_sum_of_path_numbers(root_node.right,
+                                                                                                currentSum * 10)
 
 
 if __name__ == '__main__':
