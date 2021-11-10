@@ -19,10 +19,9 @@ def find_paths_recursion(root_node, s, path, allPaths):
     if root_node.val == s and not root_node.left and not root_node.right:
         allPaths.append(path.copy())
 
-    if root_node.left:
-        find_paths_recursion(root_node.left, s - root_node.val, path, allPaths)
-    if root_node.right:
-        find_paths_recursion(root_node.right, s - root_node.val, path, allPaths)
+
+    find_paths_recursion(root_node.left, s - root_node.val, path, allPaths)
+    find_paths_recursion(root_node.right, s - root_node.val, path, allPaths)
 
     path.pop()
 
