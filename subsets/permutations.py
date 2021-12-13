@@ -28,8 +28,52 @@
 """
 from collections import deque
 
+"""
 
+genPerm([[3,1],[1,3]],0,[],[1,3])
+result = []
+"""
+# recursive
 def find_permutations(nums):
+    def generate_permutation(res, index, currentPermutation, nums_):
+        if len(currentPermutation) == len(nums_):
+            res.append(currentPermutation)
+        else:
+            for i in range(len(currentPermutation) + 1):
+                temp = currentPermutation[:]
+                temp.insert(i, nums_[index])
+                generate_permutation(res, index + 1, temp, nums_)
+
+    result = []
+    generate_permutation(result, 0, [], nums)
+    return result
+
+
+"""
+
+res = [[5,3,1],[3,5,1],[1,5,3],[5,1,3],[3,1,5],[1,3,5]]
+"""
+
+
+# recursive
+def find_permutations_2(nums):
+    result = []
+    # base case
+    if len(nums) == 1:
+        return [nums[:]]
+
+    for _ in nums:
+        num = nums.pop(0)
+        permutations = find_permutations(nums)
+        for permutation in permutations:
+            permutation.append(num)
+        nums.append(num)
+        result.extend(permutations)
+
+    return result
+
+
+def find_permutations_1(nums):
     result = []
     permutations = deque()
     # create an empty list as our base case
