@@ -26,7 +26,7 @@
 from collections import deque
 
 
-def generate_generalized_abbreviations(word):
+def generate_generalized_abbreviations1(word):
     wordLen = len(word)
     result = []
     queue = deque()
@@ -47,7 +47,29 @@ def generate_generalized_abbreviations(word):
             newWord = list(abWord[0])
             newWord.append(word[abWord[1]])
             queue.append((newWord, abWord[1] + 1, 0))
-        print(queue)
+    return result
+
+
+def generate_generalized_abbreviations(word):
+    def generate(wd, index, currentPermutation, count, res):
+        wordLen = len(wd)
+
+        if index == wordLen:
+            if count != 0:
+                currentPermutation.append(str(count))
+            result.append(''.join(currentPermutation))
+        else:
+            generate(wd, index + 1, list(currentPermutation), count + 1, res)
+
+            if count != 0:
+                currentPermutation.append(str(count))
+
+            newWord = list(currentPermutation)
+            newWord.append(wd[index])
+            generate(wd, index + 1, newWord, 0, res)
+
+    result = []
+    generate(word, 0, list(), 0, result)
     return result
 
 
