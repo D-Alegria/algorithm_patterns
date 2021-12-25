@@ -17,7 +17,7 @@
 from collections import deque
 
 
-def generate_valid_parentheses(num):
+def generate_valid_parentheses1(num):
     result = []
     permutations = deque()
     permutations.append(["", 0, 0])
@@ -32,6 +32,22 @@ def generate_valid_parentheses(num):
             if current[1] > current[2]:
                 permutations.append([current[0] + ")", current[1], current[2] + 1])
 
+    return result
+
+
+def generate_valid_parentheses(num):
+    result = []
+
+    def generate(nm, current, open, close):
+        if open == nm and close == nm:
+            result.append(current)
+        else:
+            if open < nm:
+                generate(nm, current + "(", open + 1, close)
+            if open > close:
+                generate(nm, current + ")", open, close + 1)
+
+    generate(num, "", 0, 0)
     return result
 
 
