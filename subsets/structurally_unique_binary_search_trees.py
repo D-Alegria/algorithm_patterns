@@ -48,13 +48,13 @@ class TreeNode:
         if self.right:
             print(f"r:", end=" ")
             self.right.toString()
-        print()
 
 
 def toStringList(arr):
     for ar in arr:
         if ar:
             ar.toString()
+            print()
         else:
             print(ar)
 
