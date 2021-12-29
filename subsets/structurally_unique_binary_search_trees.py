@@ -59,7 +59,7 @@ def toStringList(arr):
             print(ar)
 
 
-def find_unique_trees(n):
+def find_unique_trees1(n):
     def get_unique(ar):
 
         result = []
@@ -80,6 +80,29 @@ def find_unique_trees(n):
 
     arr = [i + 1 for i in range(n)]
     x = get_unique(arr)
+    toStringList(x)
+    return len(x)
+
+
+def find_unique_trees(n):
+    def get_unique(start, end):
+        result = []
+        if start > end:
+            return [None]
+
+        for i in range(start, end + 1):
+            leftSubtree = get_unique(start, i - 1)
+            rightSubtree = get_unique(i + 1, end)
+
+            for left in leftSubtree:
+                for right in rightSubtree:
+                    tree = TreeNode(i)
+                    tree.right = right
+                    tree.left = left
+                    result.append(tree)
+        return result
+
+    x = get_unique(1, n)
     toStringList(x)
     return len(x)
 
