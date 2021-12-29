@@ -79,7 +79,6 @@ public class Permutations {
     public static List<List<Integer>> findPermutationsDFS(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         if (nums.length == 1) {
-            System.out.println(nums[0]);
             result.add(new ArrayList<>(List.of(nums[0])));
             return result;
         }
