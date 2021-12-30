@@ -19,7 +19,7 @@
 """
 
 
-def find_range(arr, key):
+def find_range1(arr, key):
     result = [-1, -1]
     start, end = 0, len(arr) - 1
 
@@ -37,6 +37,34 @@ def find_range(arr, key):
             while end < len(arr) - 1 and arr[end + 1] == key:
                 end += 1
             return [start, end]
+    return result
+
+
+def binary_search(arr, key, findMax):
+    start, end = 0, len(arr) - 1
+    keyIndex = -1
+
+    while start <= end:
+        mid = start + (end - start) // 2
+
+        if arr[mid] < key:
+            start = mid + 1
+        elif arr[mid] > key:
+            end = mid - 1
+        else:
+            keyIndex = mid
+            if findMax:
+                start = mid + 1
+            else:
+                end = mid - 1
+    return keyIndex
+
+
+def find_range(arr, key):
+    result = [-1, -1]
+    result[0] = binary_search(arr, key, False)
+    if result[0] != -1:
+        result[1] = binary_search(arr, key, True)
     return result
 
 
