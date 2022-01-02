@@ -45,17 +45,21 @@ def search_min_diff_element(arr, key):
     while start <= end:
         mid = start + (end - start) // 2
 
-        if key - arr[mid] > 0:
+        if arr[mid] < key:
             start = mid + 1
-        elif key - arr[mid] < 0:
+        elif arr[mid] > key:
             end = mid - 1
         else:
             return arr[mid]
-    return arr[start - 1]
+
+    if key - arr[start] < key - arr[end]:
+        return arr[start]
+    return arr[end]
 
 
 if __name__ == '__main__':
     print(search_min_diff_element([4, 6, 10], 7))
     print(search_min_diff_element([4, 6, 10], 4))
     print(search_min_diff_element([1, 3, 8, 10, 15], 12))
+    print(search_min_diff_element([1, 3, 8, 10, 15], 7))
     print(search_min_diff_element([4, 6, 10], 17))
