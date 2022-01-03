@@ -52,7 +52,8 @@ def search_min_diff_element(arr, key):
         else:
             return arr[mid]
 
-    if key - arr[start] > key - arr[end]:
+    # print(f"start: {start}, end: {end}")
+    if key - arr[start] > arr[end] - key:
         return arr[start]
     return arr[end]
 
@@ -61,5 +62,5 @@ if __name__ == '__main__':
     print(search_min_diff_element([4, 6, 10], 7))
     print(search_min_diff_element([4, 6, 10], 4))
     print(search_min_diff_element([1, 3, 8, 10, 15], 12))
-    # print(search_min_diff_element([1, 3, 8, 10, 15], 7))
+    print(search_min_diff_element([1, 3, 8, 10, 15], 7))
     print(search_min_diff_element([4, 6, 10], 17))
