@@ -19,24 +19,56 @@
     9   6   5   4   2
             ^
 """
-
+import heapq
 import random
+
+
+def binary_search(arr, X):
+    start, end = 0, len(arr) - 1
+
+    while start <= end:
+        mid = start + (end - start) // 2
+
+        if arr[mid] < X:
+            start = mid + 1
+        elif arr[mid] > X:
+            end = mid - 1
+        else:
+            return mid
+    # if end > 0:
+    #     return end - 1
+    return end
+
+
+def find_closest_elements1(arr, K, X):
+    index = binary_search(arr, X)
+    start, end = index - K, index + K
+
+    start = max(start, 0)
+    end = min(end, len(arr) - 1)
+
+    minHeap = []
+
+    for i in range(start, end + 1):
+        heapq.heappush(minHeap, (abs(arr[i] - X), arr[i]))
+
+    result = []
+    for _ in range(K):
+        result.append(heapq.heappop(minHeap)[1])
+
+    result.sort()
+    return result
 
 
 def get_pivot_point(start, end, X, arr):
     pivot_point = random.randint(start, end)
     arr[end], arr[pivot_point] = arr[pivot_point], arr[end]
-    pointer = 0
+    pointer = start
 
     for i in range(start, end):
-        if arr[i][1] <= X:
-            if X - arr[i][1] < X - arr[end][1]:
-                arr[pointer], arr[i] = arr[i], arr[pointer]
-                pointer += 1
-        else:
-            if arr[i][1] - X < arr[end][1] - X:
-                arr[pointer], arr[i] = arr[i], arr[pointer]
-                pointer += 1
+        if abs(X - arr[i][1]) < abs(X - arr[end][1]):
+            arr[pointer], arr[i] = arr[i], arr[pointer]
+            pointer += 1
 
     arr[pointer], arr[end] = arr[end], arr[pointer]
     return pointer
@@ -49,9 +81,8 @@ def find_closest_elements(arr, K, X):
     # using quick select - sort the value in the arr based on the diff from X
     n = len(arr)
     start, end = 0, n - 1
-    while True:
+    while start < end:
         p = get_pivot_point(start, end, X, arr)
-        print(arr, p)
         if p > K - 1:
             end = p - 1
         elif p < K - 1:
