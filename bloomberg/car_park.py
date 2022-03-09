@@ -57,58 +57,95 @@ from heapq import *
 
 class CarPark:
 
-    def __init__(self):
-        self.size = 10
-        self.garage = {}
-        self.garage_spaces = ["_"] * self.size
-        self.currentSpace = 0
-        self.available_spaces = []
+    def __init__(self, n):
+        self.size = n
+        self.garage = ['_'] * n
+        self.carPark = {}
+        self.available = []
+
+        for i in range(n):
+            heappush(self.available, i)
 
     def park(self, carId):
-        if len(self.available_spaces) == 0:
-            self.garage[carId] = self.currentSpace
-            self.garage_spaces[self.currentSpace] = carId
-            self.currentSpace += 1
-        else:
-            space = heappop(self.available_spaces)
-            self.garage[carId] = space
-            self.garage_spaces[space] = carId
-        return ''.join(self.garage_spaces)
+        space = heappop(self.available)
+        self.garage[space] = carId
+        self.carPark[carId] = space
+        return ''.join(self.garage)
 
     def unpark(self, carId):
-        if carId in self.garage:
-            space = self.garage[carId]
-            del self.garage[carId]
-            self.garage_spaces[space] = '_'
-            heappush(self.available_spaces, space)
-        return ''.join(self.garage_spaces)
+        space = self.carPark[carId]
+        self.garage[space] = '_'
+        heappush(self.available, space)
+        del self.carPark[carId]
+        return ''.join(self.garage)
 
-    def repark(self, carId):
+    def rePark(self, carId):
         self.unpark(carId)
         self.park(carId)
 
     def defrag(self):
-        move_cars = []
-        for i in range(len(self.garage_spaces) - 1, -1, -1):
-            if self.garage_spaces[i] != '_' and i > self.available_spaces[0]:
-                move_cars.append(self.garage_spaces[i])
+        rePark = []
+        for carId in self.carPark.keys():
+            if self.carPark[carId] > self.available[0]:
+                rePark.append(carId)
 
-        for i in move_cars:
-            if self.garage[i] > self.available_spaces[0]:
-                self.repark(i)
+        for carId in rePark:
+            if self.carPark[carId] > self.available[0]:
+                self.rePark(carId)
+        return ''.join(self.garage)
 
-        return ''.join(self.garage_spaces)
+# def __init__(self):
+#     self.size = 10
+#     self.garage = {}
+#     self.garage_spaces = ["_"] * self.size
+#     self.currentSpace = 0
+#     self.available_spaces = []
+#
+# def park(self, carId):
+#     if len(self.available_spaces) == 0:
+#         self.garage[carId] = self.currentSpace
+#         self.garage_spaces[self.currentSpace] = carId
+#         self.currentSpace += 1
+#     else:
+#         space = heappop(self.available_spaces)
+#         self.garage[carId] = space
+#         self.garage_spaces[space] = carId
+#     return ''.join(self.garage_spaces)
+#
+# def unpark(self, carId):
+#     if carId in self.garage:
+#         space = self.garage[carId]
+#         del self.garage[carId]
+#         self.garage_spaces[space] = '_'
+#         heappush(self.available_spaces, space)
+#     return ''.join(self.garage_spaces)
+#
+# def repark(self, carId):
+#     self.unpark(carId)
+#     self.park(carId)
+#
+# def defrag(self):
+#     move_cars = []
+#     for i in range(len(self.garage_spaces) - 1, -1, -1):
+#         if self.garage_spaces[i] != '_' and i > self.available_spaces[0]:
+#             move_cars.append(self.garage_spaces[i])
+#
+#     for i in move_cars:
+#         if self.garage[i] > self.available_spaces[0]:
+#             self.repark(i)
+#
+#     return ''.join(self.garage_spaces)
 
 
 if __name__ == '__main__':
-    carPark1 = CarPark()
+    carPark1 = CarPark(10)
     print(carPark1.park("A"))
     print(carPark1.park("B"))
     print(carPark1.park("C"))
     print(carPark1.unpark("B"))
     print(carPark1.park("D"))
     print()
-    carPark2 = CarPark()
+    carPark2 = CarPark(10)
     print(carPark2.park("A"))
     print(carPark2.park("B"))
     print(carPark2.park("C"))
