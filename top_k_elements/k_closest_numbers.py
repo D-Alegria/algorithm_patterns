@@ -35,8 +35,6 @@ def binary_search(arr, X):
             end = mid - 1
         else:
             return mid
-    # if end > 0:
-    #     return end - 1
     return end
 
 
