@@ -54,10 +54,8 @@ def find_maximum_distinct_elements(nums, k):
 
     while store and k > 0:
         top = heappop(store)
-        while k > 0 and top > 1:
-            top -= 1
-            k -= 1
-        if top == 1:
+        k -= top - 1
+        if k >= 0:
             count += 1
 
     return count - k
