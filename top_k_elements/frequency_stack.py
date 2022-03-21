@@ -39,7 +39,7 @@ class FrequencyStack:
 
     def pop(self):
         num = heappop(self.maxHeap)[2]
-        if self.frequencyMap[num] > 0:
+        if self.frequencyMap[num] > 1:
             self.frequencyMap[num] -= 1
         else:
             del self.frequencyMap[num]
