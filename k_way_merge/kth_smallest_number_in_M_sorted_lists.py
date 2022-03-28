@@ -16,38 +16,27 @@
                            !
     [2, 6, 8], [3, 6, 7], [1, 3, 4]
     count = 4
-    i = 1
-    [4,3,3,2,1]
+    i = 0
+    [4,6,6]
 """
 
 from heapq import heappush, heappop, heappushpop
 
 
 def find_k_smallest_number(lists, k):
-    maxHeap = []
+    minHeap = []
 
-    lists.sort(key=lambda x: x[0])
-    print(lists)
+    for idx, li in enumerate(lists):
+        heappush(minHeap, (li[0], idx, 0))  # val, r, c
 
-    count = 0
-    i = 0
-    maxlength = 0
+    while k - 1:
+        val, r, c = heappop(minHeap)
 
-    for li in lists:
-        maxlength = max(maxlength, len(li))
+        if c < len(lists[r]) - 1:
+            heappush(minHeap, (lists[r][c + 1], r, c + 1))
+        k -= 1
 
-    while i < maxlength:
-        for li in lists:
-            if i < len(li):
-                if count < k:
-                    heappush(maxHeap, -li[i])
-                else:
-                    if -maxHeap[0] > li[i]:
-                        heappushpop(maxHeap, -li[i])
-                count += 1
-        i += 1
-
-    return -heappop(maxHeap)
+    return heappop(minHeap)[0]
 
 
 if __name__ == '__main__':
