@@ -37,11 +37,11 @@ def allConstruct(target, wordBank, memo=None):
     m = len of target
     
     time: O(n^m*m*m)
-    space: o(m*m*m)
+    space: o(m^m)
     
     After memoization
     time: o(n*m*m*m)
-    space: o(m*m*m)
+    space: o(m^m)
 """
 
 if __name__ == '__main__':
