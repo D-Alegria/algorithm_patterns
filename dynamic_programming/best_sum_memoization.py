@@ -43,7 +43,7 @@ def bestSum(targetSum, numbers, memo=None):
     
     After memoization
     time: O(n*m*m)
-    space: O(m*m*m)
+    space: O(m*m)
 """
 
 if __name__ == '__main__':
