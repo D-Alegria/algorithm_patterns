@@ -3,9 +3,10 @@ def canSum(n, arr):
     table[0] = True
 
     for i in range(n + 1):
-        for a in arr:
-            if i + a < n + 1:
-                table[i + a] = table[i] or table[i + a]
+        if table[i]:
+            for a in arr:
+                if i + a < n + 1:
+                    table[i + a] = table[i]
     return table[n]
 
 

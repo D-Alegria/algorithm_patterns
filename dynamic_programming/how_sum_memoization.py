@@ -51,6 +51,17 @@ def howSum(targetSum, numbers, memo=None):
     return memo[targetSum]
 
 
+"""
+    m = target
+    n = len of arr
+    
+    time = O(n^m)
+    space = O(m)
+    
+    After memoization
+    time = O(m*n*m)
+    space = O(m)
+"""
 if __name__ == '__main__':
     print(howSum(5, [2, 3]))
     print(howSum(7, [5, 3, 4, 7]))
