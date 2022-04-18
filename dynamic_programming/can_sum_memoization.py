@@ -28,6 +28,18 @@ def canSum(n, arr, memo={}):
     return False
 
 
+"""
+    n = len of arr
+    m = target
+    
+    time = O(n^m)
+    space = O(m)
+    
+    After memoization
+    time = O(n*m)
+    space = O(m)
+"""
+
 if __name__ == '__main__':
     print(canSum(7, [5, 3, 4, 7]))
     print(canSum(5, [2, 3]))

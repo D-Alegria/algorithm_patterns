@@ -25,6 +25,10 @@ def gridTraveler(m, n, memo={}):  # T = O(2(n+m)) S = O(n+m)
     
     time = O(2^(m+n))
     space = O(m+n)
+    
+    After memoization
+    time = O(m+n)
+    space = O(m+n)
 """
 
 if __name__ == '__main__':
