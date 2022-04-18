@@ -19,6 +19,14 @@ def gridTraveler(m, n, memo={}):  # T = O(2(n+m)) S = O(n+m)
     return memo[(m, n)]
 
 
+"""
+    n = no of cols
+    m = no of rows
+    
+    time = O(2^(m+n))
+    space = O(m+n)
+"""
+
 if __name__ == '__main__':
     print(gridTraveler(1, 1))
     print(gridTraveler(2, 2))
