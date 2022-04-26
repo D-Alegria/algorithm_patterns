@@ -5,9 +5,9 @@ def bestSum(targetSum, numbers):
     for i in range(targetSum + 1):
         if table[i] is not None:
             for num in numbers:
-                if i + num < targetSum + 1:
-                    if not table[i + num] or len(table[i]) + 1 < len(table[i + num]):
-                        table[i + num] = [*table[i], num]
+                combination = [*table[i], num]
+                if i + num < targetSum + 1 and (not table[i + num] or len(combination) < len(table[i + num])):
+                    table[i + num] = combination
     return table[targetSum]
 
 
