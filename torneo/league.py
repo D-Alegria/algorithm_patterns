@@ -28,6 +28,6 @@ if __name__ == '__main__':
     teams = ['A', 'B', 'C', 'D', 'E', 'F']
     print(getGames(teams))
     print(len(getGames(teams)))
-    teams = ['A', 'B', 'C', 'D', 'E', 'F']
+    teams = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     print(getGames(teams))
     print(len(getGames(teams)))
