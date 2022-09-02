@@ -5,7 +5,6 @@ def getGames(teams):
         for j in range(i + 1, len(teams)):
             games.append([teams[i], teams[j]])
             games.append([teams[j], teams[i]])
-
     return games
 
 
