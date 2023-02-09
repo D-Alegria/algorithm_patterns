@@ -9,8 +9,8 @@ def rescue_boats(people, limit):
     start, end = 0, len(people) - 1
     count = 0
 
-    while start < end:
-        if people[start] + people[end] < limit:
+    while start <= end:
+        if people[start] + people[end] <= limit:
             start += 1
         end -= 1
         count += 1
