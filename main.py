@@ -12,7 +12,8 @@ def calculate_shares(amount):
           f"{'VAT ($)':{' '}^{20}}")
     for key, val in shares.items():
         realValue = amount * (val / 100)
-        tax = realValue * 0.01
+        # tax = realValue * 0.01
+        tax = 0.5
         valueAfterTax = realValue - tax
         total += valueAfterTax
         fees += tax
@@ -23,4 +24,4 @@ def calculate_shares(amount):
 
 
 if __name__ == '__main__':
-    print(calculate_shares(206.32))
+    print(calculate_shares(103.30))
