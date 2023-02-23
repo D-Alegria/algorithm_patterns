@@ -5,7 +5,11 @@ def word_search(grid, word):
     wordLen = len(word)
 
     def backtracking(r, c, index):
-        if r > row - 1 or c > col - 1 or r < 0 or c < 0 or index > wordLen - 1 or grid[r][c] != word[index]:
+        if index == wordLen:
+            return True
+
+        if r > row - 1 or c > col - 1 or r < 0 or c < 0 or grid[r][c].lower() != word[
+            index].lower():
             return False
 
         grid[r][c] = "#"
@@ -22,7 +26,6 @@ def word_search(grid, word):
 
         grid[r][c] = word[index]
         return result
-
 
     for rr in range(row):
         for cc in range(col):
@@ -97,4 +100,3 @@ if __name__ == '__main__':
             print("\n\tSearch result = Word could not be found")
         num += 1
         print("-" * 100, "\n")
-
