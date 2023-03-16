@@ -7,10 +7,8 @@ def matchstick_to_square(matchsticks):
         return False
     matchsticks.sort(reverse=True)
     one_side_length = total // 4
-    print(total, one_side_length)
 
     def backtracking(sticks):
-        print(sticks)
         if len(sticks) == 0:
             return True
 
